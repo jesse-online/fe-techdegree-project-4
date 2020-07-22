@@ -1,0 +1,71 @@
+/* ============================================= */
+/*              Grid System                      */
+/* ============================================= */
+
+.container {
+    padding: $container-padding;
+    @include mq($mq-tablet) {
+      max-width: $container-max-width;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .centered {
+    @include mq($mq-tablet) {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    padding: $row-padding;
+    @include mq($mq-tablet) {
+      flex-direction: row;
+    }
+  }
+  
+  [class^=col] {
+    margin-top: $gutter;
+    flex-basis: $col-flex-basis-default;
+    min-height: $col-min-height;
+    padding: $col-padding;
+    border-radius: $col-border-radius;
+    @include mq($mq-tablet) {
+      display: flex;
+      justify-content: center;
+      margin-top: $col-top-margin-tablet;
+      align-items: center;
+    }
+  }
+  
+  [class^=col] + [class^=col] {
+    @include mq($mq-tablet) {
+      margin-left: $gutter;
+    }
+  }
+
+  // Set unique flex-basis for each column
+  @for $i from 1 through $columns {
+    .col-#{$i} {
+      @include mq($mq-tablet) {
+        flex-basis: map-get($col-flex-bases, #{$i});
+      }
+    }
+  }
+
+.theme {
+  @for $i from 1 through $columns {
+    &.col-#{$i} {
+      background-color: map-get($col-bg-colors, #{$i});
+    }
+  }
+  }
+
+  .card {
+    flex-basis: $card-flex-basis;
+  }

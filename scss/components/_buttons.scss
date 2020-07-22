@@ -1,0 +1,30 @@
+/* ============================================= */
+/*              Buttons                          */
+/* ============================================= */
+
+%btn {
+    margin-top: $btn-top-margin;
+    width: $btn-width;
+    color: $white;
+    border: none;
+    padding: $btn-padding-default;
+    text-transform: uppercase;
+    border-radius: $btn-border-radius;
+}
+
+// Apply all %btn styles to all buttons and create selectors to style background colors drawing from a map
+  @each $state, $color in $color-btn-states {
+    .btn-#{$state} {
+      @extend %btn;
+      @include lighten-up($color);
+      @include mq($mq-tablet) {
+        padding: $btn-padding-tablet;
+        & + [class^=btn] {
+          margin-left: $btn-gutter-tablet;
+        }
+      }
+    }
+  }
+  
+  
+  

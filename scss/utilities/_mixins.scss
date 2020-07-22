@@ -1,0 +1,19 @@
+/* ============================================= */
+/*              Mixins                           */
+/* ============================================= */
+
+// Add background color to .btn-* styles and lighten on hover
+@mixin lighten-up($bg-color) {
+    background-color: $bg-color;
+    transition: $lighten-transition;
+    &:hover {
+        background-color: lighten($bg-color, $btn-lighten-amt);
+      }
+}
+
+// Wrap @content in a media query
+@mixin mq($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}

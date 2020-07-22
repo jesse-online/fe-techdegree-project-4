@@ -1,0 +1,31 @@
+/* ============================================= */
+/*              Navigation                       */
+/* ============================================= */
+
+.nav {
+    padding-left: $nav-left-padding;
+    flex-basis: $nav-flex-basis;
+    display: flex;
+    flex-direction: column;
+    @include mq($mq-tablet) {
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    &-link {
+      text-align: center;
+      border-radius: $nav-link-border-radius;
+      padding: $nav-link-padding;
+      display: block;
+      width: $nav-link-width;
+      transition: $nav-link-transition;
+      @include mq($mq-tablet) {
+        flex-basis: $nav-link-flex-basis;
+      }
+    }
+    
+    &-link:hover {
+      color: $white;
+      background-color: $color-secondary;
+    }
+}
